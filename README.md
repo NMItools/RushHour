@@ -99,24 +99,24 @@ _**[Reporting Engine]**_
 
 Reports for provider administrator:
 
-_- Productivity report
+- Productivity report
 - Availability report
-- Income per month/quarter/year_
+- Income per month/quarter/year
 
 Reports for employees:
 
-_- Availability report (day/week)
+- Availability report (day/week)
 - Most/Least booked time of the day/week
-- Top 10 clients who spent the most money/time per month/quarter/year_
+- Top 10 clients who spent the most money/time per month/quarter/year
 
 Reports for clients:
 
-_- Top 3 favorite providers for the last month/quarter/year
+- Top 3 favorite providers for the last month/quarter/year
 - Top 5 favorite activities for the last month/quarter/year
 - Expenses report (week/month/quarter/year)
   ○ Per provider
   ○ Per business domain
-  ○ Per activity_
+  ○ Per activity
 
 _**[Integrations]**_
 - Google Calendar
