@@ -16,69 +16,69 @@ Entities
 
 - Provider
 Represents the service provider that is subscribed to Rush Hour. Consists of:
-● Name
+- Name
 
-● Website
+- Website
 
-● Business domain
+- Business domain
 
-● Phone
+- Phone
 
-● Start time of the working day
+- Start time of the working day
 
-● End time of the working day
+- End time of the working day
 
-● Working days
+- Working days
 
 Account
 Represents the account of all users who can access the system (provider’s employees and clients). Consists of:
-● Email
-● Full name
-● Password
-● Role
+- Email
+- Full name
+- Password
+- Role
 
 Employee
 Represents an employee in a service provider company. Consists of:
-● Title
+- Title
 
-● Phone
-● Rate per hour
-● Provider
-● Account
+- Phone
+- Rate per hour
+- Provider
+- Account
 
 Client
 Represents a client of the service provider. One client can have multiple appointments for
 multiple service providers. Consists of:
-● Phone
-● Address
-● Account
+- Phone
+- Address
+- Account
 
 Role
 Represents the account’s role. Consists of:
-● Name
-● Account
+- Name
+- Account
 
 3 roles are supported in RushHour:
-● Provider Administrator
-● Employee
-● Client
+- Provider Administrator
+- Employee
+- Client
 
 Activity
 Represents an activity that can be part of an appointment. Consists of:
-● Name
-● Price
-● Duration
-● Provider
-● Employees
+- Name
+- Price
+- Duration
+- Provider
+- Employees
 
 Appointment
 Represents an appointment. Consists of:
-● Start date
-● End date
-● Employee
-● Client
-● Activities
-● Price
+- Start date
+- End date
+- Employee
+- Client
+- Activities
+- Price
 
 Application Skeleton
 - N-layered architecture (data access, business, presentation layers, and tests). 
@@ -96,23 +96,23 @@ CRUD functionality should be implemented for providers, employees, clients, acti
 Reporting Engine
 
 Reports for provider administrator:
-● Productivity report
-● Availability report
-● Income per month/quarter/year
+- Productivity report
+- Availability report
+- Income per month/quarter/year
 
 Reports for employees:
-● Availability report (day/week)
-● Most/Least booked time of the day/week
-● Top 10 clients who spent the most money/time per month/quarter/year
+- Availability report (day/week)
+- Most/Least booked time of the day/week
+- Top 10 clients who spent the most money/time per month/quarter/year
 
 Reports for clients:
-● Top 3 favorite providers for the last month/quarter/year
-● Top 5 favorite activities for the last month/quarter/year
-● Expenses report (week/month/quarter/year)
+- Top 3 favorite providers for the last month/quarter/year
+- Top 5 favorite activities for the last month/quarter/year
+- Expenses report (week/month/quarter/year)
   ○ Per provider
   ○ Per business domain
   ○ Per activity
 
 Integrations
-● Google Calendar
-● Microsoft Calendar
+- Google Calendar
+- Microsoft Calendar
