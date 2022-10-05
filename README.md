@@ -17,11 +17,17 @@ Entities
 - Provider
 Represents the service provider that is subscribed to Rush Hour. Consists of:
 ● Name
+
 ● Website
+
 ● Business domain
+
 ● Phone
+
 ● Start time of the working day
+
 ● End time of the working day
+
 ● Working days
 
 Account
