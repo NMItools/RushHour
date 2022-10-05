@@ -1,8 +1,6 @@
 # RushHour - The Appointment Platform
 
-<img src="https://github.com/NMItools/RushHour/blob/main/rushhour.jpg" width="100" height="100">
-
-![RushHour](https://github.com/NMItools/RushHour/blob/main/rushhour.jpg)
+<img src="https://github.com/NMItools/RushHour/blob/main/rushhour.jpg" width="300">
 
 ## Overview
 
