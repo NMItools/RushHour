@@ -96,17 +96,21 @@ _**[CRUD functionality]**_
 - appointments.
 
 _**[Reporting Engine]**_
+
 Reports for provider administrator:
+
 _- Productivity report
 - Availability report
 - Income per month/quarter/year_
 
 Reports for employees:
+
 _- Availability report (day/week)
 - Most/Least booked time of the day/week
 - Top 10 clients who spent the most money/time per month/quarter/year_
 
 Reports for clients:
+
 _- Top 3 favorite providers for the last month/quarter/year
 - Top 5 favorite activities for the last month/quarter/year
 - Expenses report (week/month/quarter/year)
