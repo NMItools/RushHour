@@ -1,0 +1,61 @@
+image: docker:19.03.12
+
+services:
+  - docker:19.03.12-dind
+  - mysql:5.7
+
+stages:
+  - build
+  - package
+  - deploy
+
+build:
+  image: maven:3.8.5-sapmachine-17
+  stage: build
+  cache:
+    paths:
+      - .m2/repository
+    when: 'on_success'
+    key: "$CI_JOB_NAME"
+  script:
+    - mvn clean package
+  artifacts:
+    paths:
+      - target
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop"'
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+
+package:
+  stage: package
+  variables:
+    IMAGE_FULL_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_FULL_NAME .
+    - docker push $IMAGE_FULL_NAME
+  only:
+    - develop
+
+deploy:
+  stage: deploy
+  variables:
+    IMAGE_FULL_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+
+  script:
+    - &install-sshpass apk upgrade && apk update && apk add openssh-client && apk add sshpass
+    - sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_URL echo HEllo
+    - sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_URL "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+    - sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_URL "docker pull $IMAGE_FULL_NAME"
+    - sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_URL "docker-compose down --remove-orphans"
+    - sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_URL "docker-compose up -d"
+  only:
+    - develop
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+  MYSQL_ROOT_PASSWORD: "password"
+  API_NAME: rush-hour-api
+  SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/rushhour?createDatabaseIfNotExist=true
